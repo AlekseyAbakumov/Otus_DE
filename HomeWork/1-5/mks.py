@@ -1,7 +1,7 @@
 import requests
 import psycopg2
 
-from config import host, user, password, db_name
+from config_prod import host, port, user, password, db_name
 
 def getjson(url):
     request=requests.get(url)
@@ -27,7 +27,7 @@ longitude=x[1]
 
 try:
     # connect to exist database
-    connection = psycopg2.connect(host=host, user=user, password=password, database=db_name)
+    connection = psycopg2.connect(host=host, port=port, user=user, password=password, database=db_name)
     connection.autocommit = True
 
     with connection.cursor() as cursor:
@@ -36,7 +36,7 @@ try:
             "SELECT max(period) as period FROM where_mks;"
         )
         last_period=cursor.fetchone()[0]
-        
+
         if last_period < timestamp: 
             # post request 
             cursor.execute(
