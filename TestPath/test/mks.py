@@ -1,7 +1,13 @@
 import requests
 import psycopg2
 
-from config_prod import host, port, user, password, db_name
+# from config_prod import host, port, user, password, db_name
+
+host = "rc1b-fsebsbna7j41vi8o.mdb.yandexcloud.net"
+port = 6432
+user = "srv-user"
+password = "12345678"
+db_name = "analytics"
 
 def getjson(url):
     request=requests.get(url)
