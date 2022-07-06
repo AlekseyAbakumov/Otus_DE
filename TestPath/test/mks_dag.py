@@ -5,6 +5,9 @@ from airflow.operators.python_operator import PythonOperator
 import requests
 import psycopg2
 
+# ЭТОТ МОДУЛЬ ОТКАЗАЛСЯ ПОДТЯГИВАТЬ
+# from config_prod import host, port, user, password, db_name
+
 def getjson():
     url="http://api.open-notify.org/iss-now.json"
     request=requests.get(url)
