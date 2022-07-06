@@ -62,8 +62,9 @@ def post_data(**kwargs):
 
 with DAG(
     dag_id='Where_MKS',
-    schedule_interval=None,
-    start_date=pendulum.datetime(2022, 1, 1)
+    schedule_interval='* * * * *',
+    start_date=pendulum.datetime(2022, 1, 1),
+    catchup=False
     ) as dag:
 
     task_getjson = PythonOperator(task_id="getjson", python_callable=getjson)
